@@ -1,19 +1,12 @@
 # Revisión del UML preliminar
 
-Estado: pendiente de revisión real del equipo.
+Estado: pendiente de revisión por Daniel Valarezo, Esteban Figueroa y Julián Jiménez.
 
-El diagrama `dizeo.drawio` contiene dos vistas de un mismo modelo orientado a objetos. Abrirlo en diagrams.net, contrastarlo con módulos y requisitos y realizar los cambios acordados. No se debe presentar una revisión o aprobación que todavía no ocurrió.
+Abrir `dizeo.drawio` en diagrams.net y comprobar las cinco clases de dominio, sus atributos y métodos, las asociaciones y multiplicidades y su correspondencia con los cinco módulos.
 
-## Acta para completar durante la reunión
-
-- Fecha:
+- Fecha de revisión:
 - Participantes:
-- Clases, atributos y métodos revisados:
-- Asociaciones y multiplicidades verificadas:
-- Uso de composición o agregación justificado:
-- Correspondencia con los cinco módulos:
-- Cambios realizados:
-- Decisiones acordadas:
-- Pendientes y responsables:
+- Cambios acordados:
+- Pendientes:
 
-El archivo editable y el registro permiten cumplir la exigencia de revisar el diagrama con el equipo; el archivo por sí solo no sustituye esa revisión.
+La revisión se registrará después de realizarla.

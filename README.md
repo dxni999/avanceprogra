@@ -2,73 +2,62 @@
 
 ## Progreso 1 de Programación III
 
-Proyecto de análisis, diseño y selección de una solución para planificar trabajadores y actividades de obra. El caso procede del levantamiento de requerimientos de Dizeo realizado en Ingeniería de Requerimientos.
+Análisis, diseño y selección de una solución para organizar trabajadores y actividades en obras de construcción. El alcance comprende **5 obras, 20 trabajadores, 100 actividades y 5 usuarios**.
 
-Este repositorio contiene exclusivamente la documentación del Progreso 1. La implementación en Java corresponde al plan para Progreso 2.
+## Problema
 
-## Problema y objetivo
+Coordinar actividades entre obras requiere decidir su orden de atención e identificar trabajadores con la especialidad y el horario disponibles. La información dispersa puede generar cruces, esperas y actividades atrasadas. El proyecto relaciona prioridad, fecha límite, especialidad, jornada y avance.
 
-Coordinar obras que comparten trabajadores, especialidades y horarios requiere comprobar disponibilidad, precedencias y traslados. La propuesta organiza información para reducir asignaciones incompatibles y facilitar el seguimiento. Las situaciones del caso son hipótesis que el equipo deberá validar con registros y entrevistas; no se presentan resultados de un piloto realizado.
+## Integrantes y módulos
 
-El objetivo del avance es formular el problema, definir módulos, elaborar el modelo orientado a objetos, comparar dos alternativas con estructuras y algoritmos y fundamentar una selección antes de programar.
-
-## Integrantes y responsabilidad preliminar
-
-| Integrante | Componentes previstos |
+| Integrante | Responsabilidad preliminar |
 |---|---|
-| Daniel Valarezo | Obras y seguimiento. Coordinación de documentación. |
-| Esteban Figueroa | Trabajadores, disponibilidad, planificación y asignación. Integración con persistencia. |
-| Julián Jiménez | Actividades, prioridades, dependencias, UML y comparación técnica. |
+| Daniel Valarezo | M1 Obras y M5 Seguimiento. Problema y documentación. |
+| Esteban Figueroa | M2 Trabajadores y M4 Asignación. Disponibilidad y validación de horarios. |
+| Julián Jiménez | M3 Actividades y prioridades. Comparador, cola de prioridad, UML y comparación técnica. |
 
-El equipo está conformado por Daniel Valarezo, Esteban Figueroa y Julián Jiménez. Los cinco módulos se distribuyen entre los tres, con integración y revisión compartidas. El reparto corresponde al plan de trabajo y no acredita implementación ya realizada.
+La integración y la revisión se realizarán entre los tres integrantes.
 
 ## Alcance funcional
 
-1. Obras: registrar compromisos, filtrar y ordenar entregas e identificar tareas vencidas o sin responsable.
-2. Trabajadores y disponibilidad: consultar especialidades y horarios, calcular carga y disponibilidad.
-3. Actividades y prioridades: definir tareas, ordenar por prioridad/fecha/código y detectar ciclos.
-4. Planificación y asignación: sugerir equipos, validar restricciones, consultar agendas y reprogramar con motivo.
-5. Seguimiento e incidencias: distinguir avance informado y validado, resolver incidencias y calcular indicadores.
+1. **Obras:** buscar por código, filtrar por estado, ordenar por entrega y consultar pendientes.
+2. **Trabajadores:** buscar por código, filtrar por especialidad, consultar disponibilidad y calcular horas asignadas.
+3. **Actividades y prioridades:** clasificar, ordenar, consultar la próxima pendiente y actualizar prioridad.
+4. **Asignación:** consultar candidatos, detectar cruces, asignar y reprogramar.
+5. **Seguimiento:** actualizar avance, identificar vencidas, contar por estado y calcular avance por obra.
 
-El informe desarrolla cinco operaciones por módulo, actores, datos, reglas, relaciones y responsables. No se incorporan nómina, compras, facturación, aplicación móvil, rutas óptimas ni optimización global automática.
+Cada actividad pertenece a una obra y tiene como máximo una asignación activa. Un trabajador no puede tener cruces de horario. La prioridad es alta, media o baja; los empates se resuelven por fecha límite y código.
 
-## Diseño y alternativa seleccionada
+## Modelo y alternativas
 
-El UML propone Obra, Actividad, Trabajador, Disponibilidad, Asignacion, Usuario, ReporteAvance, Incidencia, PlanSemanal y EventoAuditoria. Usa composición cuando corresponde y un atributo de rol para evitar herencia artificial.
+El UML contiene cinco clases de dominio: **Obra, Actividad, Trabajador, Asignacion y Usuario**. Obra contiene sus actividades mediante composición. Las asignaciones relacionan actividad, trabajador y usuario responsable.
 
-La alternativa A utiliza listas, búsqueda lineal, matriz de adyacencia y DFS. La alternativa B propone HashMap, índice por especialidad, TreeMap por trabajador, PriorityQueue y grafo con listas de adyacencia y Kahn. Se selecciona B por consultas repetidas y dependencias dispersas, con sus costos de mantenimiento e integridad explicados en el informe.
+La alternativa A utiliza ArrayList y búsquedas lineales. La alternativa B utiliza HashMap por código, PriorityQueue para las actividades pendientes y ArrayList para las asignaciones. Se selecciona **B** por su correspondencia con las búsquedas y la extracción repetida de la próxima actividad.
 
-El diseño considera prioridad alta, media y baja, con desempate por fecha comprometida y código. La prioridad no elimina las restricciones de especialidad, jornada, dependencias, equipo completo ni traslado. Java Swing y PostgreSQL son restricciones de la implementación futura.
+Buscar un trabajador tiene costo O(w) en A y O(1) esperado en B. Elegir y retirar la próxima pendiente cuesta O(q) en A y O(log q) en B. El informe incluye las cotas espaciales, sus condiciones y las operaciones que mantienen el mismo costo en ambas alternativas.
 
 ## Estructura inicial del repositorio
 
 | Ubicación | Contenido |
 |---|---|
-| `README.md` | Descripción del problema, alcance, alternativa, integrantes y estructura. |
-| `docs/informe/Informe_Dizeo_Progreso1.docx` y su PDF | Informe técnico editable y versión de entrega, con portada y formato del documento de referencia. |
-| `docs/presentacion/Presentacion_Dizeo_Progreso1_Final.pptx` | Presentación editable con notas, referencias y distribución de 9 minutos y 30 segundos entre tres expositores. |
-| `docs/uml/dizeo.drawio` | UML preliminar editable en dos vistas. |
-| `docs/uml/REVISION.md` | Registro para la revisión real del equipo. |
-| `docs/plan/OBSERVACIONES.md` | Registro de observaciones docentes y mejoras obligatorias para Progreso 2. |
+| `README.md` | Descripción, alcance, integrantes, módulos y alternativa seleccionada. |
+| `docs/informe/` | Informe en Word y PDF. |
+| `docs/presentacion/` | Presentación de nueve minutos, tres por integrante. |
+| `docs/uml/dizeo.drawio` | Modelo de clases editable. |
+| `docs/uml/REVISION.md` | Registro para la revisión del equipo. |
+| `docs/plan/OBSERVACIONES.md` | Observaciones docentes que se conservarán para Progreso 2. |
 
-El repositorio tiene historial Git local con un commit inicial de documentación. No tiene remoto configurado y no se ha publicado en una cuenta de GitHub.
+Este avance contiene análisis y diseño. La implementación en Java corresponde a Progreso 2. El repositorio tiene historial Git local; su publicación en GitHub se realizará desde la cuenta del grupo.
 
-## Revisión y publicación
+## Riesgos técnicos y mitigación
 
-1. Abrir el informe y la presentación. Revisar la coherencia entre problema, módulos, clases y alternativas.
-2. Abrir `docs/uml/dizeo.drawio` en diagrams.net. Revisar las dos vistas y registrar cambios y participantes en REVISION.md. El diagrama no se considera revisado por el equipo hasta realizar esa actividad.
-3. Confirmar el reparto entre los tres integrantes y ensayar aproximadamente 3 minutos y 10 segundos por persona.
-4. Abrir esta carpeta como repositorio existente en la herramienta Git que use el grupo y publicarla en su cuenta de GitHub. Conservar el historial local y registrar la URL real. No se inventa una dirección de repositorio.
-5. Ensayar la presentación para que todos participen y conservar las observaciones del docente como requisitos de mejora.
+| Riesgo | Mitigación |
+|---|---|
+| Cruces de horario | Comprobar jornada e intervalos antes de asignar o reprogramar. |
+| Empates o prioridades incorrectas | Usar un único comparador por prioridad, fecha y código. |
+| Cola desactualizada | Retirar y reinsertar al cambiar prioridad; sincronizar asignación y estado. |
+| Datos duplicados o incompletos | Validar códigos únicos, campos obligatorios y avance entre 0 y 100 %. |
 
-## Plan para Progreso 2
+## Revisión y fuentes
 
-Validar alcance y contratos de clases; implementar estructuras y reglas; contrastar alternativas en casos pequeños; integrar Swing, servicio y PostgreSQL; y verificar concurrencia, permisos, auditoría, recuperación y rendimiento conforme a los requisitos. El informe describe responsables, hitos relativos, riesgos y mitigaciones. No se afirman pruebas ni implementación terminadas.
-
-## Uso de inteligencia artificial
-
-ChatGPT se utilizó como apoyo en análisis, redacción y diseño preliminar. Se incorporan borradores del informe, UML y presentación. El equipo revisará y comprenderá el contenido. La revisión grupal permanece pendiente.
-
-## Fuentes
-
-Las referencias completas APA 7 están en el informe y las fuentes de cada diapositiva están en sus notas. Incluyen el documento de requerimientos, Durdyev y Hosseini, Gómez Sánchez y colaboradores, Hendrickson, documentación de Oracle y documentación de PostgreSQL.
+El equipo debe revisar el informe y abrir el UML en diagrams.net para comprobar clases, métodos, asociaciones y multiplicidades. La declaración de IA y las referencias APA 7 constan en el informe. ChatGPT apoyó el análisis, la redacción y el diseño preliminar; la revisión grupal permanece pendiente.
