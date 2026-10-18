@@ -17,11 +17,10 @@ El objetivo del avance es formular el problema, definir módulos, elaborar el mo
 | Integrante | Componentes previstos |
 |---|---|
 | Daniel Valarezo | Obras y seguimiento. Coordinación de documentación. |
-| Esteban Figueroa | Trabajadores y disponibilidad. Apoyo a agenda y persistencia. |
-| Julián Jiménez | Actividades, prioridades y grafo de dependencias. |
-| Cuarto integrante por definir | Planificación y asignación. Integración del servicio. |
+| Esteban Figueroa | Trabajadores, disponibilidad, planificación y asignación. Integración con persistencia. |
+| Julián Jiménez | Actividades, prioridades, dependencias, UML y comparación técnica. |
 
-La consigna exige entre cuatro y cinco integrantes. Falta completar el cuarto nombre. Este reparto es preliminar y no acredita aportes de implementación ya realizados.
+El equipo está conformado por Daniel Valarezo, Esteban Figueroa y Julián Jiménez. Los cinco módulos se distribuyen entre los tres, con integración y revisión compartidas. El reparto corresponde al plan de trabajo y no acredita implementación ya realizada.
 
 ## Alcance funcional
 
@@ -46,8 +45,8 @@ El diseño considera prioridad alta, media y baja, con desempate por fecha compr
 | Ubicación | Contenido |
 |---|---|
 | `README.md` | Descripción del problema, alcance, alternativa, integrantes y estructura. |
-| `docs/informe/Informe_Dizeo_Progreso1.pdf` | Informe técnico con los apartados de la consigna y referencias APA 7. |
-| `docs/presentacion/Presentacion_Dizeo_Progreso1_Final.pptx` | Presentación editable con notas, referencias y distribución propuesta de 9 minutos y 30 segundos. |
+| `docs/informe/Informe_Dizeo_Progreso1.docx` y su PDF | Informe técnico editable y versión de entrega, con portada y formato del documento de referencia. |
+| `docs/presentacion/Presentacion_Dizeo_Progreso1_Final.pptx` | Presentación editable con notas, referencias y distribución de 9 minutos y 30 segundos entre tres expositores. |
 | `docs/uml/dizeo.drawio` | UML preliminar editable en dos vistas. |
 | `docs/uml/REVISION.md` | Registro para la revisión real del equipo. |
 | `docs/plan/OBSERVACIONES.md` | Registro de observaciones docentes y mejoras obligatorias para Progreso 2. |
@@ -58,7 +57,7 @@ El repositorio tiene historial Git local con un commit inicial de documentación
 
 1. Abrir el informe y la presentación. Revisar la coherencia entre problema, módulos, clases y alternativas.
 2. Abrir `docs/uml/dizeo.drawio` en diagrams.net. Revisar las dos vistas y registrar cambios y participantes en REVISION.md. El diagrama no se considera revisado por el equipo hasta realizar esa actividad.
-3. Incorporar el cuarto integrante y ajustar el reparto antes de entregar.
+3. Confirmar el reparto entre los tres integrantes y ensayar aproximadamente 3 minutos y 10 segundos por persona.
 4. Abrir esta carpeta como repositorio existente en la herramienta Git que use el grupo y publicarla en su cuenta de GitHub. Conservar el historial local y registrar la URL real. No se inventa una dirección de repositorio.
 5. Ensayar la presentación para que todos participen y conservar las observaciones del docente como requisitos de mejora.
 
@@ -68,7 +67,7 @@ Validar alcance y contratos de clases; implementar estructuras y reglas; contras
 
 ## Uso de inteligencia artificial
 
-ChatGPT apoyó la organización del análisis, la comparación técnica, el UML preliminar, la preparación del informe y la presentación. También se consultaron fuentes editoriales, universitarias y documentación oficial. El informe declara los usos y las verificaciones. El equipo debe revisar, adaptar y comprender el contenido. La revisión grupal y las entrevistas siguen pendientes.
+ChatGPT se utilizó como apoyo en análisis, redacción y diseño preliminar. Se incorporan borradores del informe, UML y presentación. El equipo revisará y comprenderá el contenido. La revisión grupal permanece pendiente.
 
 ## Fuentes
 
