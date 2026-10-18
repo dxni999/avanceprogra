@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device" version="24.7.17">
+  <diagram id="1_Dominio_y_asignacion" name="1 Dominio y asignacion">
+    <mxGraphModel dx="1200" dy="1400" grid="1" gridSize="10" page="1" pageWidth="1169" pageHeight="1400">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="titulo" value="Dizeo - UML preliminar de la solución propuesta&lt;br&gt;Diseño para Progreso 1. Revisión del equipo pendiente." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="1080" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Obra" value="&lt;b&gt;Obra&lt;/b&gt;&lt;hr&gt;- codigo: String&lt;br&gt;- finComprometido: LocalDate&lt;br&gt;- estado: EstadoObra&lt;hr&gt;+ reprogramar(fecha, motivo)&lt;br&gt;+ calcularAvance(): double" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Actividad" value="&lt;b&gt;Actividad&lt;/b&gt;&lt;hr&gt;- codigo: String&lt;br&gt;- duracion: Duration&lt;br&gt;- prioridad: Prioridad&lt;br&gt;- personalRequerido: int&lt;hr&gt;+ cambiarPrioridad(p)&lt;br&gt;+ puedeIniciar(): boolean" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="690" y="130" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Trabajador" value="&lt;b&gt;Trabajador&lt;/b&gt;&lt;hr&gt;- codigo: String&lt;br&gt;- especialidades: Set&amp;lt;String&amp;gt;&lt;br&gt;- activo: boolean&lt;hr&gt;+ esCompatible(actividad)&lt;br&gt;+ horasAsignadas(semana)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="60" y="520" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Asignacion" value="&lt;b&gt;Asignacion&lt;/b&gt;&lt;hr&gt;- id: UUID&lt;br&gt;- inicio, fin: LocalDateTime&lt;br&gt;- estado: EstadoAsignacion&lt;br&gt;- version: long&lt;hr&gt;+ cancelar(motivo)&lt;br&gt;+ reprogramar(intervalo)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="690" y="520" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Disponibilidad" value="&lt;b&gt;Disponibilidad&lt;/b&gt;&lt;hr&gt;- inicio, fin: LocalDateTime&lt;br&gt;- tipo: JORNADA / BLOQUEO&lt;br&gt;- validada: boolean&lt;hr&gt;+ contiene(intervalo)&lt;br&gt;+ solapa(intervalo)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="60" y="910" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Usuario" value="&lt;b&gt;Usuario&lt;/b&gt;&lt;hr&gt;- id: UUID&lt;br&gt;- rol: Rol&lt;br&gt;- credencialHash: String&lt;hr&gt;+ tienePermiso(accion)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="690" y="910" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" value="Obra 1 / Actividad 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;startArrow=diamond;startFill=1;" edge="1" parent="1" source="Obra" target="Actividad">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="Actividad 1 / Asignacion 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;" edge="1" parent="1" source="Actividad" target="Asignacion">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="Trabajador 1..* / Asignacion 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;" edge="1" parent="1" source="Trabajador" target="Asignacion">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="Trabajador 1 / Disponibilidad 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;startArrow=diamond;startFill=1;" edge="1" parent="1" source="Trabajador" target="Disponibilidad">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="Trabajador 0..1 / Usuario 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;" edge="1" parent="1" source="Trabajador" target="Usuario">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="530" y="830" />
+              <mxPoint x="895" y="830" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" value="0..* predecesoras / 0..* sucesoras" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;loopDirection=north;exitX=0.7;exitY=0;entryX=0.3;entryY=0;" edge="1" parent="1" source="Actividad" target="Actividad">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="nota" value="Cada actividad pertenece a una obra. Las dependencias son de la misma obra, sin ciclos.&lt;br&gt;La asignación confirma exactamente el personal requerido y respeta horario, especialidad y traslados.&lt;br&gt;Composición indica pertenencia exclusiva y conserva la baja lógica." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1220" width="1080" height="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="2_Seguimiento_y_trazabilidad" name="2 Seguimiento y trazabilidad">
+    <mxGraphModel dx="1200" dy="1400" grid="1" gridSize="10" page="1" pageWidth="1169" pageHeight="1400">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="titulo2" value="Dizeo - UML de seguimiento y versiones&lt;br&gt;Actividad y Usuario son las mismas clases de la primera vista." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="1080" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Actividad" value="&lt;b&gt;Actividad&lt;/b&gt;&lt;hr&gt;- codigo: String&lt;br&gt;- estado: EstadoActividad&lt;hr&gt;+ cerrar(avanceValidado)&lt;br&gt;+ tieneIncidenciasAbiertas()" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="60" y="130" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="ReporteAvance" value="&lt;b&gt;ReporteAvance&lt;/b&gt;&lt;hr&gt;- id: UUID&lt;br&gt;- porcentaje: int&lt;br&gt;- fecha: LocalDateTime&lt;br&gt;- estado: EstadoRevision&lt;hr&gt;+ validar(supervisor)&lt;br&gt;+ corregir(motivo)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="690" y="130" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Incidencia" value="&lt;b&gt;Incidencia&lt;/b&gt;&lt;hr&gt;- id: UUID&lt;br&gt;- motivo: String&lt;br&gt;- estado: EstadoIncidencia&lt;hr&gt;+ resolver(supervisor)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="60" y="520" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="Usuario" value="&lt;b&gt;Usuario&lt;/b&gt;&lt;hr&gt;- id: UUID&lt;br&gt;- rol: Rol&lt;br&gt;- credencialHash: String&lt;hr&gt;+ tienePermiso(accion)" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="690" y="520" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="PlanSemanal" value="&lt;b&gt;PlanSemanal&lt;/b&gt;&lt;hr&gt;- id: UUID&lt;br&gt;- version: long&lt;br&gt;- inicioSemana: LocalDate&lt;br&gt;- publicado: boolean&lt;hr&gt;+ publicar(supervisor)&lt;br&gt;+ cumplimiento(): double" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="60" y="910" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="EventoAuditoria" value="&lt;b&gt;EventoAuditoria&lt;/b&gt;&lt;hr&gt;- id: UUID&lt;br&gt;- objetoId, tipo: String&lt;br&gt;- fecha: LocalDateTime&lt;br&gt;- antes, despues: String&lt;hr&gt;+ describirCambio(): String" style="rounded=0;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=14;fillColor=#F0F6F7;strokeColor=#426B82;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="690" y="910" width="410" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="s1" value="Actividad 1 / ReporteAvance 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;" edge="1" parent="1" source="Actividad" target="ReporteAvance">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s2" value="Actividad 1 / Incidencia 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;" edge="1" parent="1" source="Actividad" target="Incidencia">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s3" value="Reporte 0..* / Usuario 1 autor; 0..1 revisor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;" edge="1" parent="1" source="ReporteAvance" target="Usuario">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s4" value="Incidencia 0..* / Usuario 1 autor" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;" edge="1" parent="1" source="Incidencia" target="Usuario">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s5" value="Usuario 1 / EventoAuditoria 0..*" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;" edge="1" parent="1" source="Usuario" target="EventoAuditoria">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s6" value="0..* planes / 0..* actividades" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=none;fontSize=15;labelBackgroundColor=#FFFFFF;strokeColor=#426B82;" edge="1" parent="1" source="PlanSemanal" target="Actividad">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="20" y="1035" />
+              <mxPoint x="20" y="255" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nota2" value="PlanSemanal también referencia 0..* Asignaciones; cada asignación puede aparecer en 0..* versiones.&lt;br&gt;El plan publicado conserva instantáneas del compromiso. Un reporte sin validar no cierra la actividad.&lt;br&gt;El cierre exige avance validado del 100 % y ausencia de incidencias abiertas." style="text;html=1;whiteSpace=wrap;align=left;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1220" width="1080" height="110" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
