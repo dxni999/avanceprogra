@@ -1,12 +1,18 @@
-# Revisión del UML preliminar
+# Registro de revisión del informe y del UML
 
-Estado: pendiente de revisión por Daniel Valarezo, Esteban Figueroa y Julián Jiménez.
+## Confirmación del equipo
 
-Abrir `dizeo.drawio` en diagrams.net y comprobar las cinco clases de dominio, sus atributos y métodos, las asociaciones y multiplicidades y su correspondencia con los cinco módulos.
+Julián Jiménez confirmó el 18 de octubre de 2026 que Daniel Valarezo, Esteban Figueroa y él realizaron la revisión conjunta del informe y del UML. También confirmó que el profesor autorizó la entrega como equipo de tres integrantes. Este registro recoge su confirmación; no atribuye una fecha de reunión ni observaciones individuales que no se proporcionaron.
 
-- Fecha de revisión:
-- Participantes:
-- Cambios acordados:
-- Pendientes:
+## Correcciones incorporadas en esta edición
 
-La revisión se registrará después de realizarla.
+- Multiplicidades por separado en cada extremo de las cuatro asociaciones del dominio.
+- Tipos de parámetros y retornos en los métodos mostrados.
+- Servicio GestorPrioridades y cambio de prioridad mediante retiro, modificación y reinserción.
+- Consulta de alternativas sobre una copia cuando no hay personal para la cabecera.
+- Retiro de otra pendiente mediante remove(objeto), con costo O(q), después de confirmar una asignación válida.
+- Conservación de la cola si la validación falla y consistencia entre asignación y retiro.
+- Promedio de avance con igual peso para todas las actividades.
+- Registro actual en Excel, según información del equipo, y cantidades definidas como alcance académico.
+
+El archivo dizeo.drawio contiene dos vistas editables. Las correcciones se describen en el informe y la presentación; corresponden a análisis y diseño, sin implementación en Java.
